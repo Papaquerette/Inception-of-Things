@@ -7,3 +7,7 @@ apt-get update
 apt-get install -y curl
 
 curl -sfL https://get.k3s.io | sh -
+
+kubectl apply -f /vagrant/confs/app1/deployment.yaml
+kubectl apply -f /vagrant/confs/app1/service.yaml
+kubectl apply -f /vagrant/confs/ingress.yaml
