@@ -11,9 +11,4 @@ do
      sleep 3
 done
 
-echo "start install"
-echo -n "token: "
-cat /vagrant/token
-echo ""
 curl -sfL https://get.k3s.io | K3S_URL=https://192.168.56.110:6443 K3S_TOKEN=$(cat /vagrant/token) INSTALL_K3S_EXEC="--node-external-ip 192.168.56.111" sh -s -
-echo "end install"
