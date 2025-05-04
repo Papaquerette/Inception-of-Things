@@ -1,4 +1,3 @@
----
 apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
@@ -6,3 +5,4 @@ metadata:
 servers: 1
 agents: 0
 image: docker.io/rancher/k3s:v1.31.5-k3s1
+network: host
