@@ -1,0 +1,17 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: gitlab
+  namespace: kube-system
+spec:
+  repo: https://charts.gitlab.io/
+  chart: gitlab
+  targetNamespace: gitlab
+  valuesContent: |
+    global:
+      edition: ce
+      hosts:
+        domain: git.pissenlit.com
+        externalIP: 127.0.0.1
+    certmanager-issuer:
+      email: 42benoit.roux@gmail.com

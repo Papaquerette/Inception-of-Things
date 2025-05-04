@@ -1,0 +1,20 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  namespace: argocd
+  name: argocd-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: "false"
+
+spec:
+  rules:
+    - host: argocd.pissenlit.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
