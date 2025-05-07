@@ -1,0 +1,21 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  namespace: dev
+  name: pissenlit-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: "false"
+
+
+spec:
+  rules:
+    - host: pissenlit.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pissenlit
+                port:
+                  number: 8080

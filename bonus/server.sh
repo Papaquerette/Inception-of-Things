@@ -11,3 +11,8 @@ kubectl apply -f ./confs/ingress.yaml
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 kubectl apply -f ./confs/gitlab-helm.yaml
+
+echo "waiting for gitlab webservice"
+kubectl wait --for=condition=Available deployment.apps/gitlab-webservice-default --timeout=600s -n gitlab
+
+kubectl apply -f ./application.yaml

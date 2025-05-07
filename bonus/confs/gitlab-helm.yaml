@@ -11,7 +11,43 @@ spec:
     global:
       edition: ce
       hosts:
-        domain: git.pissenlit.com
-        externalIP: 127.0.0.1
+        domain: pissenlit.com
+        https: true
+        gitlab:
+          name: gitlab.pissenlit.com
+          https: true
+        registry:
+          name: registry.pissenlit.com
+          https: true
+        minio:
+          name: minio.pissenlit.com
+          https: true
+        smartcard:
+          name: smartcard.pissenlit.com
+        kas:
+          name: kas.pissenlit.com
+        pages:
+          name: pages.pissenlit.com
+          https: true
+        ssh: gitlab.pissenlit.com
+      ingress:
+        enabled: true
+        provider: traefik
+        class: traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      gitlab-shell:
+        traefik:
+          entrypoint: "gitlab-shell"
+
+    nginx-ingress:
+      enabled: false
+    
+    traefik:
+      install: true
+
     certmanager-issuer:
       email: 42benoit.roux@gmail.com
+    
+      

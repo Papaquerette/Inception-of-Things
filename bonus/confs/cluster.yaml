@@ -5,4 +5,20 @@ metadata:
 servers: 1
 agents: 0
 image: docker.io/rancher/k3s:v1.31.5-k3s1
-network: host
+ports:
+  - port: 80:80
+    nodeFilters:
+      - loadbalancer
+  - port: 443:443
+    nodeFilters:
+      - loadbalancer
+  - port: 22:22
+    nodeFilters:
+      - loadbalancer
+  - port: 5000:5000
+    nodeFilters:
+      - loadbalancer
+hostAliases:
+  - ip: 192.168.1.103
+    hostnames: 
+      - gitlab.pissenlit.com
