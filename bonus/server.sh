@@ -1,18 +1,25 @@
 #!/bin/bash
 
-k3d cluster create -c ./confs/cluster.yaml
-kubectl create -f ./confs/namespaces.yaml
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-kubectl apply -f ./confs/argocd-config-map.yaml
-kubectl rollout restart deploy argocd-server -n argocd
-kubectl -n argocd rollout restart deploy argocd-repo-server
-kubectl apply -f ./confs/ingress.yaml
+function prepend() { while read line; do echo "${1}: ${line}"; done; }
 
-helm repo add gitlab https://charts.gitlab.io/
-helm repo update
-kubectl apply -f ./confs/gitlab-helm.yaml
+setups=(cluster gitlab argocd application)
 
-echo "waiting for gitlab webservice"
-kubectl wait --for=condition=Available deployment.apps/gitlab-webservice-default --timeout=600s -n gitlab
+pushd confs
 
-kubectl apply -f ./application.yaml
+for setup in ${setups[@]}; do
+    pushd "$setup"
+    if test -f ./run.sh; then
+        ./run.sh | prepend "run $setup"
+    fi
+    popd
+done
+
+for setup in ${setups[@]}; do
+    pushd "$setup"
+    if test -f ./wait.sh; then
+        ./wait.sh | prepend "wait $setup"
+    fi
+    popd
+done
+
+popd
