@@ -1,8 +1,5 @@
 #!/bin/bash
 
-exec 1>/vagrant/server.stdout
-exec 2>/vagrant/server.stderr
-
 apt-get update
 apt-get install -y curl
 

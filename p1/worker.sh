@@ -1,8 +1,5 @@
 #!/bin/bash
 
-exec 1>/vagrant/worker.stdout
-exec 2>/vagrant/worker.stderr
-
 apt-get update
 apt-get install -y curl
 
