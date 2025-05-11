@@ -8,8 +8,15 @@ spec:
   chart: gitlab
   targetNamespace: gitlab
   valuesContent: |
+    gitlab:
+      gitlab-shell: 
+        sshDaemon: gitlab-sshd
+
     global:
       edition: ce
+      shell:
+        tcp:
+          proxyProtocol: true
       hosts:
         domain: pissenlit.com
         https: true
@@ -47,7 +54,12 @@ spec:
     traefik:
       install: true
 
+      ports:
+        gitlab-shell:
+          expose: true
+          port: 2222
+          exposedPort: 22
+
+
     certmanager-issuer:
       email: 42benoit.roux@gmail.com
-    
-      

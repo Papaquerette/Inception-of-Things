@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ssh-gitlab-node
+  name: ssh-gitlab-node
+  namespace: gitlab
+spec:
+  ports:
+  - name: 22-22
+    nodePort: 30022
+    port: 22
+    protocol: TCP
+    targetPort: 2222
+  selector:
+    app: gitlab-shell
+  type: NodePort

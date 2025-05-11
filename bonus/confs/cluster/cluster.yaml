@@ -12,13 +12,21 @@ ports:
   - port: 443:443
     nodeFilters:
       - loadbalancer
-  - port: 22:22
+  - port: 22:30022
     nodeFilters:
-      - loadbalancer
-  - port: 5000:5000
-    nodeFilters:
-      - loadbalancer
+      - server:0
 hostAliases:
-  - ip: 192.168.1.103
-    hostnames: 
+  - ip: 192.168.56.103
+    hostnames:
       - gitlab.pissenlit.com
+registries:
+  create: 
+    name: nexus42lyon
+  config: |
+    mirrors:
+      nexus.42lyon.fr:
+        endpoint:
+          - https://nexus.42lyon.fr:5000
+      docker.io:
+        endpoint:
+          - https://nexus.42lyon.fr:5000
