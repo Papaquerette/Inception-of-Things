@@ -5,4 +5,21 @@ metadata:
 servers: 1
 agents: 0
 image: docker.io/rancher/k3s:v1.31.5-k3s1
-network: host
+ports:
+  - port: 80:80
+    nodeFilters:
+      - loadbalancer
+  - port: 443:443
+    nodeFilters:
+      - loadbalancer
+registries:
+  create: 
+    name: nexus42lyon
+  config: |
+    mirrors:
+      nexus.42lyon.fr:
+        endpoint:
+          - https://nexus.42lyon.fr:5000
+      docker.io:
+        endpoint:
+          - https://nexus.42lyon.fr:5000

@@ -4,8 +4,6 @@ metadata:
   name: main-ingress
   annotations:
     traefik.ingress.kubernetes.io/router.tls: "false"
-    # traefik.ingress.kubernetes.io/router.entrypoints: web
-
 
 spec:
   rules:
@@ -18,7 +16,7 @@ spec:
               service:
                 name: app1
                 port:
-                  number: 8081
+                  number: 8080
     - host: app2.com
       http:
         paths:
@@ -28,7 +26,7 @@ spec:
               service:
                 name: app2
                 port:
-                  number: 8082
+                  number: 8080
     - host: app3.com
       http:
         paths:
@@ -38,4 +36,4 @@ spec:
               service:
                 name: app3
                 port:
-                  number: 8083
+                  number: 8080

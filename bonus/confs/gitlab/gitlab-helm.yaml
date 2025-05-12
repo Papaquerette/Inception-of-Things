@@ -60,6 +60,5 @@ spec:
           port: 2222
           exposedPort: 22
 
-
     certmanager-issuer:
       email: 42benoit.roux@gmail.com

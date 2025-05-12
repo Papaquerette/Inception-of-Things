@@ -1,10 +1,25 @@
 #!/bin/bash
 
 pushd sh_srcs > /dev/null
+. welcome.sh
 . setups.sh
 . pass.sh
 . demo.sh
 popd > /dev/null
+
+continue=y
+
+if [ "`id -u`" -ne 0 ]; then
+    printf "running as $(id -un), root is recommended\n"
+    printf "Continue ?(y/N) "
+    read continue
+    continue=${continue:-'n'}
+    echo ""
+fi
+
+if [[ "$continue" == "n" ]]; then
+    exit 1
+fi
 
 function run_setups() {
     pushd confs > /dev/null
@@ -25,6 +40,7 @@ function delete_cluster() {
 }
 
 copy_pass=false
+logs=false
 
 POSITIONAL_ARGS=()
 
@@ -32,6 +48,9 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         -c|--copy)
             copy_pass=true
+            ;;
+        -l|--logs)
+            logs=true
             ;;
         -*|--*)
             echo "Unknown option $1"

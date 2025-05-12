@@ -27,16 +27,12 @@ EOF
 function run_demo() {
     echo "start demo"
 
-    copy_pass="true" service="gitlab" get_pass
+    copy_pass="true" service="gitlab" get_pass 2> /dev/null && echo "default root password in clipboard" || echo "default root password: $(service="gitlab" get_pass)"
 
-    echo "gitlab root password copied"
     echo "Create token at: https://gitlab.pissenlit.com/-/user_settings/personal_access_tokens?scopes=api,write_repository&name=cli_token"
     echo -n "token (no echo): "
     read -s token
-
     echo ""
-
-    mkdir -p gitlab_config
 
     write_config
 
@@ -54,7 +50,7 @@ function run_demo() {
     git remote add gitlab git@gitlab.pissenlit.com:root/kube-conf.git
     git add dev
     git commit -m "deploy app"
-    git push gitlab
+    git push --set-upstream gitlab master
     popd > /dev/null
 
     pushd confs/application > /dev/null
