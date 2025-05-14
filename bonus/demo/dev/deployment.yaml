@@ -14,11 +14,6 @@ spec:
     spec:
       containers:
         - name: pissenlit
-          image: bashofmann/rancher-demo:1.1.0
+          image: stelirion/pissenlit:v1.0.1
           ports:
             - containerPort: 8080
-          env:
-            - name: COW_COLOR
-              value: purple
-            - name: PETS
-              value: cowmeleons
