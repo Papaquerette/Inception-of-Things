@@ -24,7 +24,7 @@ flowchart BT
     end
 
     devteam -- Push CodeBase --> codebase
-    devopsteam -- Push k3d confs --> confs
+    devopsteam -- Push k3s confs --> confs
     codebase -- Publish --> dockerhub
     argocd <-- Fetch changes --> confs
     argocd -- Update Confs --> dev
