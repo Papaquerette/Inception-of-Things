@@ -40,5 +40,5 @@ flowchart BT
 ## Run project
 
 ```bash
-$ ./server.sh
+$ ./scripts/server.sh
 ```

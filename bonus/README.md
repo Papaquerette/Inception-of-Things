@@ -38,6 +38,6 @@ flowchart BT
 ##
 
 ```bash
-./cluster.sh re
-./cluster.sh demo
+./scripts/cluster.sh re
+./scripts/cluster.sh demo
 ```
