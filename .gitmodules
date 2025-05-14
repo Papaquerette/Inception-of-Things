@@ -1,0 +1,7 @@
+[submodule "DemoApp"]
+	path = p3/demo/sources
+	url = https://github.com/Papaquerette/pissenlit.git
+
+[submodule "DemoConf"]
+	path = p3/demo/confs
+	url = https://github.com/Papaquerette/pissenlit-kube-conf.git

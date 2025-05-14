@@ -16,7 +16,7 @@ ports:
     nodeFilters:
       - server:0
 hostAliases:
-  - ip: 192.168.1.103
+  - ip: # fill with host ip
     hostnames:
       - gitlab.pissenlit.com
 registries:
