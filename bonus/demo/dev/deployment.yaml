@@ -16,4 +16,4 @@ spec:
         - name: pissenlit
           image: stelirion/pissenlit:v1.0.1
           ports:
-            - containerPort: 8080
+            - containerPort: 80
