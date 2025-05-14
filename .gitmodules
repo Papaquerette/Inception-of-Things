@@ -4,4 +4,4 @@
 
 [submodule "DemoConf"]
 	path = p3/demo.confs
-	url = https://github.com/Papaquerette/pissenlit-kube-conf.git
+	url = https://github.com/Papaquerette/pissenlit.git
