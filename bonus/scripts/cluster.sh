@@ -1,11 +1,15 @@
 #!/bin/bash
 
+pushd $(dirname $0)
+
 pushd sh_srcs > /dev/null
 . welcome.sh
 . setups.sh
 . pass.sh
 . demo.sh
 popd > /dev/null
+
+popd
 
 continue=y
 

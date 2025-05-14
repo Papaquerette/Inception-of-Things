@@ -3,7 +3,7 @@
 . utils.sh
 
 function setup_cluster() {
-    pushd cluster > /dev/null
+    pushd $CONFS_ROOT/cluster > /dev/null
 
     print_title "setup cluster"
 
@@ -14,7 +14,7 @@ function setup_cluster() {
 }
 
 function setup_gitlab() {
-    pushd gitlab > /dev/null
+    pushd $CONFS_ROOT/gitlab > /dev/null
 
     print_title "setup gitlab"
     run_task "add helm repo" helm repo add gitlab https://charts.gitlab.io/
@@ -30,7 +30,7 @@ function setup_gitlab() {
 }
 
 function setup_argocd() {
-    pushd argocd > /dev/null
+    pushd $CONFS_ROOT/argocd > /dev/null
 
     print_title "setup argocd"
 

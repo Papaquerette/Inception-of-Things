@@ -53,7 +53,7 @@ function run_demo() {
     git push --set-upstream gitlab master
     popd > /dev/null
 
-    pushd confs/application > /dev/null
+    pushd $CONFS_ROOT/application > /dev/null
     run_task "config application" kubectl apply -f ./application.yaml
     popd > /dev/null
 }

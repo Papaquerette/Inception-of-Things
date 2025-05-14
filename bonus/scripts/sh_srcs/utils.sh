@@ -30,6 +30,8 @@ if test -t 1; then
     fi
 fi
 
+CONFS_ROOT="${CONFS_ROOT:-"./confs"}"
+
 function print_title() {
     printf "$blue$bold$1$normal\n"
 }
