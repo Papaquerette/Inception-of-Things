@@ -3,11 +3,12 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define "server" do |server|
-    server.vm.hostname = "berouxS"
+    server.vm.hostname = "cdutel-lS"
     server.vm.network "private_network", ip: "192.168.56.110"
-    server.vm.box = "debian/bookworm64"
-    server.vm.provision "shell", path: "server.sh"
+    server.vm.box = "debian/bookworm64" 
+    server.vm.provision "shell", path: "scripts/server.sh"
     server.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--name", "cdutel-lS"]
       v.memory = 2048
       v.cpus = 2
     end

@@ -18,5 +18,9 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: COW_COLOR
-              value: purple
+            - name: TITLE
+              value: "App 3"
+            - name: CONTAINER_COLOR
+              value: teal
+            - name: PETS
+              value: chameleons
