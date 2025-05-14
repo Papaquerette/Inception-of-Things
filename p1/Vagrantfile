@@ -1,24 +1,32 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+SERVER_IP = "192.168.56.110"
+SERVER_NAME = "berouxS"
+
+WORKER_IP = "192.168.56.111"
+WORKER_NAME = "ngennaroSW"
+
 Vagrant.configure("2") do |config|
   config.vm.define "server" do |server|
-    server.vm.hostname = "berouxS"
-    server.vm.network "private_network", ip: "192.168.56.110"
+    server.vm.hostname = SERVER_NAME
+    server.vm.network "private_network", ip: SERVER_IP
     server.vm.box = "debian/bookworm64"
-    server.vm.provision "shell", path: "server.sh"
+    server.vm.provision "shell", path: "scripts/server.sh", env: {"SERVER_IP" => SERVER_IP, "WORKER_IP" => WORKER_IP}
     server.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--name", SERVER_NAME]
       v.memory = 2048
       v.cpus = 2
     end
   end
 
   config.vm.define "worker" do |worker|
-    worker.vm.hostname = "berouxSW"
-    worker.vm.network "private_network", ip: "192.168.56.111"
+    worker.vm.hostname = WORKER_NAME
+    worker.vm.network "private_network", ip: WORKER_IP
     worker.vm.box = "debian/bookworm64"
-    worker.vm.provision "shell", path: "worker.sh"
+    worker.vm.provision "shell", path: "scripts/worker.sh", env: {"SERVER_IP" => SERVER_IP, "WORKER_IP" => WORKER_IP}
     worker.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--name", WORKER_NAME]
       v.memory = 512
       v.cpus = 1
     end
