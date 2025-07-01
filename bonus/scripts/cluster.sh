@@ -6,6 +6,7 @@ pushd sh_srcs > /dev/null
 . welcome.sh
 . setups.sh
 . pass.sh
+. installers.sh
 . demo.sh
 popd > /dev/null
 
@@ -26,21 +27,27 @@ if [[ "$continue" == "n" ]]; then
 fi
 
 function run_setups() {
-    pushd confs > /dev/null
-
     setup_cluster
     setup_gitlab
-    setup_argocd
+    setup_argocds
 
-    echo Server is ready
+    echo "Server is ready"
 
     echo "Now you can run \`$0 demo\` to get a little demo" 
-
-    popd > /dev/null
 }
 
 function delete_cluster() {
     run_task "deleting cluster" k3d cluster delete pissenlit
+}
+
+function install_deps() {
+    run_task "installing docker" install_docker
+
+    run_task "installing kubectl" install_kubectl
+
+    run_task "installing k3d" install_k3d
+
+    run_task "installing helm" install_helm
 }
 
 copy_pass=false
@@ -81,6 +88,9 @@ case $1 in
     re)
         delete_cluster
         run_setups
+        ;;
+    install-deps)
+        install_deps
         ;;
     pass)
         service=$2 get_pass
