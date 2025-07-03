@@ -42,7 +42,7 @@ function run_task() {
     else
         log_file=$(mktemp)
     fi
-    spin='⣾⣽⣻⢿⡿⣟⣯⣷'
+    spin='⣷⣯⣟⡿⢿⣻⣽⣾'
     
     name="$1"
     shift

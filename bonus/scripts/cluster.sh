@@ -31,7 +31,7 @@ fi
 function run_setups() {
     setup_cluster
     setup_gitlab
-    setup_argocds
+    setup_argocd
 
     echo "Server is ready"
 
@@ -96,8 +96,5 @@ case $1 in
         ;;
     pass)
         service=$2 get_pass
-        ;;
-    demo)
-        run_demo
         ;;
 esac

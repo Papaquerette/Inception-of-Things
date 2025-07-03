@@ -1,7 +1,6 @@
 #!/bin/bash
 
 CONFS_ROOT="${CONFS_ROOT:-"./confs"}"
-IP="${EXTERNAL_IP:-127.0.0.1}"
 
 pushd $CONFS_ROOT
 
@@ -15,5 +14,3 @@ kubectl apply -f ./application.yaml
 kubectl apply -f ./ingress.yaml
 
 popd
-
-echo bash -c "echo -ne '\n$IP argocd.pissenlit.com\n$IP pissenlit.com\n' >> /etc/hosts"
