@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source .env
+
 pushd $(dirname $0)
 
 pushd sh_srcs > /dev/null

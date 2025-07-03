@@ -7,9 +7,9 @@ function setup_cluster() {
 
     print_title "setup cluster"
 
-    run_task "create cluster" k3d cluster create -c ./cluster.yaml
+    run_task "create cluster" k3d cluster create --host-alias "$EXTERNAL_IP:gitlab.pissenlit.com" -c ./cluster.yaml
     run_task "create namespaces" kubectl create -f ./namespaces.yaml
-    
+
     popd > /dev/null
 }
 

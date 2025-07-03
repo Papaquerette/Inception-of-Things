@@ -15,10 +15,6 @@ ports:
   - port: 22:30022
     nodeFilters:
       - server:0
-hostAliases:
-  - ip: # fill with host ip
-    hostnames:
-      - gitlab.pissenlit.com
 registries:
   create: 
     name: nexus42lyon
