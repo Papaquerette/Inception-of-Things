@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Papaquerette/pissenlit-kube-conf.git
+    repoURL: https://github.com/Papaquerette/pissenlit-kube-conf-beroux.git
     targetRevision: HEAD
     path: dev
   destination:
