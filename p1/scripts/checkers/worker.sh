@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ip a
+ip a show eth1

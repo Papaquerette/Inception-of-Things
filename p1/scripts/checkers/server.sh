@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ip a
+ip a show eth1
 
 kubectl get nodes -o wide
