@@ -12,9 +12,6 @@ ports:
   - port: 443:443
     nodeFilters:
       - loadbalancer
-  - port: 22:30022
-    nodeFilters:
-      - server:0
 registries:
   create: 
     name: nexus42lyon

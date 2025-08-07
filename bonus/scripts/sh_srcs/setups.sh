@@ -20,7 +20,6 @@ function setup_gitlab() {
     run_task "add helm repo" helm repo add gitlab https://charts.gitlab.io/
     run_task "update helm repo" helm repo update
     run_task "setup gitlab services" kubectl apply -f ./gitlab-helm.yaml
-    run_task "setup gitlab ssh NodePort" kubectl apply -f ./ssh-nodeport.yaml
     
     print_title "waiting gitlab"
     run_task "waiting gitlab service creation" kubectl wait --for=create deploy/gitlab-webservice-default --timeout=600s -n gitlab

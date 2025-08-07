@@ -8,10 +8,6 @@ spec:
   chart: gitlab
   targetNamespace: gitlab
   valuesContent: |
-    gitlab:
-      gitlab-shell: 
-        sshDaemon: gitlab-sshd
-
     global:
       edition: ce
       shell:
@@ -44,21 +40,12 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.tls: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      gitlab-shell:
-        traefik:
-          entrypoint: "gitlab-shell"
 
     nginx-ingress:
       enabled: false
     
     traefik:
       install: true
-
-      ports:
-        gitlab-shell:
-          expose: true
-          port: 2222
-          exposedPort: 22
 
     certmanager-issuer:
       email: 42benoit.roux@gmail.com

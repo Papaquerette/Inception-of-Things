@@ -34,8 +34,6 @@ function run_setups() {
     setup_argocd
 
     echo "Server is ready"
-
-    echo "Now you can run \`$0 demo\` to get a little demo" 
 }
 
 function delete_cluster() {
@@ -90,6 +88,9 @@ case $1 in
     re)
         delete_cluster
         run_setups
+        ;;
+    demo)
+        run_demo
         ;;
     install-deps)
         install_deps
