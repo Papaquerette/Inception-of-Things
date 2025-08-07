@@ -1,14 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+SERVER_IP = "192.168.56.110"
+SERVER_NAME = "cdutel-lS"
+
 Vagrant.configure("2") do |config|
-  config.vm.define "server" do |server|
-    server.vm.hostname = "cdutel-lS"
-    server.vm.network "private_network", ip: "192.168.56.110"
+  config.vm.define SERVER_NAME do |server|
+    server.vm.hostname = SERVER_NAME
+    server.vm.network "private_network", ip: SERVER_IP
     server.vm.box = "debian/bookworm64" 
     server.vm.provision "shell", path: "scripts/server.sh"
     server.vm.provider "virtualbox" do |v|
-      v.customize ["modifyvm", :id, "--name", "cdutel-lS"]
+      v.customize ["modifyvm", :id, "--name", SERVER_NAME]
       v.memory = 2048
       v.cpus = 2
     end
